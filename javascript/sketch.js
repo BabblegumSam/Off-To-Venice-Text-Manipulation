@@ -1,4 +1,6 @@
 
+// Changes Made: New Text, Made sketch and page web responsive, change loading screen, added animation.
+
 let loadbar = 0;
 let failedLoads = [];
 let jsonDocuments = [
@@ -10,35 +12,44 @@ let canvas;
 let files = [];
 let displayText = "";
 
+let alpha = 255;
+let textY = 0;
+
 //data structure
 let phrases = []; // for cut up generator
 
 
 function setup() {
   canvas = createCanvas(800, 500);
-  canvas.parent("sketch-container"); //move our canvas inside this HTML element
+  canvas.parent("sketch-container");
   canvas.mousePressed(handleCanvasPressed);
 
   loadFile(0);
 }
 
 function draw() {
-  background(200);
+  background(0);
 
 
   if(loadbar < jsonDocuments.length){
 
+    fill(255);
     let barLength = width*0.5;
     let length = map(loadbar,0,jsonDocuments.length,barLength/jsonDocuments.length,barLength);
     rect(width*0.25,height*0.5,length,20);
 
   }else{
 
-    let fontSize = map(displayText.length,0,200,30,20,true);
+    let fontSize = map(displayText.length,0,200,40,30,true);
     textSize(fontSize);
     textWrap(WORD);
     textAlign(CENTER);
-    text(displayText, width/4, height/3, 400);
+
+    fill(255, 200, 200, alpha);
+
+    text(displayText, width/4, height/10 + textY, width/2);
+    alpha -= 2;
+    textY += 3
 
   }
 
@@ -49,11 +60,14 @@ function handleCanvasPressed(){
   displayText = "Don't show this boring sentence, generate some text instead!";
 
   //generate cut up phrases
-  displayText = generateCutUpPhrases(3);
+  displayText = generateCutUpPhrases(floor(random(2, 5)));
 
 
   //show text in HTML
   showText(displayText);
+  console.log(displayText);
+  alpha = 255;
+  textY = 0;
 
 }
 
@@ -143,4 +157,11 @@ function showText(text){
 
 }
 
-  
+function windowResized() {
+
+  if(windowWidth < 800){
+    resizeCanvas(windowWidth, 500);
+  }else if(canvas.width != 800){
+    resizeCanvas(800, 500);
+  }
+}
