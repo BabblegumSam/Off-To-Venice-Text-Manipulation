@@ -40,7 +40,7 @@ function draw() {
 
   }else{
 
-    let fontSize = map(displayText.length,0,200,40,30,true);
+    let fontSize = map(displayText.length,0,windowWidth/10,40,30,true);
     textSize(fontSize);
     textWrap(WORD);
     textAlign(CENTER);
