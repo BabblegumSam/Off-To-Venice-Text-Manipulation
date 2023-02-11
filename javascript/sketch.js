@@ -1,5 +1,5 @@
 
-// Changes Made: New Text, Made sketch and page web responsive, change loading screen, added animation.
+// Changes Made: New Text, made sketch and page web responsive,  added animation.
 
 let loadbar = 0;
 let failedLoads = [];
@@ -20,7 +20,7 @@ let phrases = []; // for cut up generator
 
 
 function setup() {
-  canvas = createCanvas(800, 500);
+  canvas = createCanvas(windowWidth/3, windowWidth/6);
   canvas.parent("sketch-container");
   canvas.mousePressed(handleCanvasPressed);
 
