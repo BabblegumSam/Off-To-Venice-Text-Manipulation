@@ -162,6 +162,6 @@ function windowResized() {
   if(windowWidth < 800){
     resizeCanvas(windowWidth, 500);
   }else if(canvas.width != 800){
-    resizeCanvas(800, 500);
+    resizeCanvas(windowWidth/3, windowWidth/6);
   }
 }
