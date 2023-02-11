@@ -20,7 +20,7 @@ let phrases = []; // for cut up generator
 
 
 function setup() {
-  canvas = createCanvas(windowWidth/3, windowWidth/6);
+  canvas = createCanvas(windowWidth/2, windowWidth/3); // canvas height scaled to width so proportion ratio is the same
   canvas.parent("sketch-container");
   canvas.mousePressed(handleCanvasPressed);
 
@@ -160,8 +160,8 @@ function showText(text){
 function windowResized() {
 
   if(windowWidth < 800){
-    resizeCanvas(windowWidth, 500);
+    resizeCanvas(windowWidth, windowWidth/2);
   }else if(canvas.width != 800){
-    resizeCanvas(windowWidth/3, windowWidth/6);
+    resizeCanvas(windowWidth/2, windowWidth/2);
   }
 }
