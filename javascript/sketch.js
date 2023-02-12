@@ -160,8 +160,8 @@ function showText(text){
 function windowResized() {
 
   if(windowWidth < 800){
-    resizeCanvas(windowWidth, windowWidth/2);
+    resizeCanvas(800, 533);
   }else if(canvas.width != 800){
-    resizeCanvas(windowWidth/2, windowWidth/2);
+    resizeCanvas(windowWidth/2, windowWidth/3);
   }
 }
